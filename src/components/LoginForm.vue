@@ -12,7 +12,7 @@
             <span @click="handleForgotPassword" class="login-text">forgot password?</span>
         </div>
         <template #actions>
-            <div class="login-actions">
+            <!-- <div class="login-actions">
                 <ButtonUI class="action__btn" @click.stop="handleLogin">Login</ButtonUI>
                 <span class="action__text">Or sign Up Using</span>
                 <div class="action__icons">
@@ -20,7 +20,7 @@
                     <span>yandex</span>
                     <span>google</span>
                 </div>
-            </div>
+            </div> -->
         </template>
     </CardUI>
     </div>

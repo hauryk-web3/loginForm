@@ -1,10 +1,10 @@
 <template>
-  <LoginForm></LoginForm>
+  <RegistrationForm></RegistrationForm>
 </template>
 
 
 <script setup>
-import LoginForm from './components/LoginForm.vue';
+import RegistrationForm from './components/RegistrationForm.vue';
 
 </script>
 
