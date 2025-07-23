@@ -13,7 +13,6 @@
                 label="First name"
                 :error="errors.firstName"
             >
-                
             </InputUI>
             <InputUI 
                 class="register-input__text" 
@@ -63,6 +62,9 @@ import {
   validatePassword,
   validateConfirmPassword,
 } from '../utils/validation';
+import { register } from '../services/authService';
+
+console.log(import.meta.env.VITE_USER_API);
 
 interface User {
   firstName: string;
@@ -119,8 +121,15 @@ const validate = (): boolean => {
   return Object.values(errors).every(error => error === '');
 };
 
-const handleRegister = () => {
+const handleRegister = async () => {
   if (!validate()) return;
+
+  await register({
+    firstname: user.firstName,
+    lastname: user.lastName,
+    email: user.email,
+    password: user.password,
+  });
 
   console.log('Отправляем на сервер:', { ...user });
 };
