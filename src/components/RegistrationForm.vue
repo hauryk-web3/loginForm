@@ -63,8 +63,7 @@ import {
   validateConfirmPassword,
 } from '../utils/validation';
 import { register } from '../services/authService';
-
-console.log(import.meta.env.VITE_USER_API);
+import {router} from '../router/index';
 
 interface User {
   firstName: string;
@@ -124,14 +123,15 @@ const validate = (): boolean => {
 const handleRegister = async () => {
   if (!validate()) return;
 
-  await register({
+  const response = await register({
     firstname: user.firstName,
     lastname: user.lastName,
     email: user.email,
     password: user.password,
   });
 
-  console.log('Отправляем на сервер:', { ...user });
+  router.push({ name: 'verify-email', query: { email: response.user.email } });
+
 };
 </script>
 

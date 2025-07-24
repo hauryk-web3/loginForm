@@ -1,10 +1,11 @@
 <template>
-  <RegistrationForm></RegistrationForm>
+  <main>
+      <RouterView></RouterView>
+  </main>
 </template>
 
 
 <script setup>
-import RegistrationForm from './components/RegistrationForm.vue';
 
 </script>
 
