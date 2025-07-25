@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import RegisterView from '../components/RegistrationForm.vue';
 import VerifyEmailView from '../components/VerifyEmailView.vue';
+import LoginForm from '../components/LoginForm.vue';
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     component: VerifyEmailView,
     props: route => ({ email: route.query.email as string }),
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginForm,
+  }
 ]
 
 export const router = createRouter({
