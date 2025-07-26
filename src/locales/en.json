@@ -1,0 +1,39 @@
+{
+  "register": {
+    "title": "Register",
+    "labels": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm"
+    },
+    "actions": {
+      "register": "Register"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "labels": {
+      "username": "Username",
+      "password": "Password"
+    },
+    "forgotPassword": "Forgot password?",
+    "actions": {
+      "login": "Login",
+      "orSignUpUsing": "Or sign Up Using",
+      "yandex": "Yandex",
+      "google": "Google"
+    }
+  },
+  "emailValidation": {
+    "title": "OTP Verification",
+    "timerText": "You can resend the code in {countdown}s",
+    "infoLine1": "We've sent a verification code to your",
+    "infoLine2": "email - {email}",
+    "buttons": {
+      "submit": "Submit",
+      "resend": "Resend code"
+    }
+  }
+}
