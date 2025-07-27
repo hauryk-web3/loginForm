@@ -1,6 +1,6 @@
-import { createI18n } from 'vue-i18n'
-import ru from '../locales/ru.json'
-import en from '../locales/en.json'
+import { createI18n } from 'vue-i18n';
+import ru from '../locales/ru.json';
+import en from '../locales/en.json';
 
 const i18n = createI18n({
   legacy: false,
@@ -10,6 +10,6 @@ const i18n = createI18n({
     ru,
     en,
   },
-})
+});
 
-export default i18n
+export default i18n;

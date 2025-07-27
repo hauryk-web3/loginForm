@@ -1,42 +1,36 @@
 <template>
-    <CardUI class="email-validation__card">
-        <template #title>
-            <div class="email-validation__title">
-                <span class="email-validation__title-text">{{ $t('emailValidation.title') }}</span>
-            </div>
-            <p v-if="countdown > 0" class="email-validation__timer-text" v-html="timerText"></p>
-        </template>
-        <div class="email-validation__placeholder">
-            <p>{{ $t('emailValidation.infoLine1') }}</p>
-            <p>{{ $t('emailValidation.infoLine2', { email: userEmail }) }}</p>
-        </div>
-        <div class="otp-inputs">
-            <input
-                v-for="(digit, index) in otp"
-                :key="index"
-                type="text"
-                inputmode="numeric"
-                maxlength="1"
-                class="otp-input"
-                v-model="otp[index]"
-                ref="inputs"
-                @input="onInput(index)"
-                @keydown.backspace="onBackspace(index)"
-            />
-        </div>
-        <ButtonUI 
-            class="email-validation__btn"
-            @click="handleSubmit"
-        >
-            {{ $t('emailValidation.buttons.submit') }}
-        </ButtonUI>
-        <ButtonUI 
-            class="email-validation__btn"
-            @click="handleResetCode"
-        >
-            {{ $t('emailValidation.buttons.resend') }}
-        </ButtonUI>
-    </CardUI>
+  <CardUI class="email-validation__card">
+    <template #title>
+      <div class="email-validation__title">
+        <span class="email-validation__title-text">{{ $t('emailValidation.title') }}</span>
+      </div>
+      <p v-if="countdown > 0" class="email-validation__timer-text" v-html="timerText"></p>
+    </template>
+    <div class="email-validation__placeholder">
+      <p>{{ $t('emailValidation.infoLine1') }}</p>
+      <p>{{ $t('emailValidation.infoLine2', { email: userEmail }) }}</p>
+    </div>
+    <div class="otp-inputs">
+      <input
+        v-for="(digit, index) in otp"
+        :key="index"
+        type="text"
+        inputmode="numeric"
+        maxlength="1"
+        class="otp-input"
+        v-model="otp[index]"
+        ref="inputs"
+        @input="onInput(index)"
+        @keydown.backspace="onBackspace(index)"
+      />
+    </div>
+    <ButtonUI class="email-validation__btn" @click="handleSubmit">
+      {{ $t('emailValidation.buttons.submit') }}
+    </ButtonUI>
+    <ButtonUI class="email-validation__btn" @click="handleResetCode">
+      {{ $t('emailValidation.buttons.resend') }}
+    </ButtonUI>
+  </CardUI>
 </template>
 
 <script setup lang="ts">
@@ -55,7 +49,7 @@ const route = useRoute();
 const countdown = ref(60);
 const timer = ref<number | null>(null);
 
-const userEmail = computed(() => route.query.email as string || '');
+const userEmail = computed(() => (route.query.email as string) || '');
 
 function startCountdown() {
   countdown.value = 180;
@@ -75,7 +69,7 @@ function stopCountdown() {
 const handleResetCode = () => {
   stopCountdown();
   startCountdown();
-}
+};
 
 const otp = ref<string[]>(Array(6).fill(''));
 const inputs = ref<HTMLInputElement[]>([]);
@@ -99,9 +93,7 @@ function onBackspace(index: number) {
 
 const getOtpValue = computed(() => otp.value.join(''));
 
-const timerText = computed(() =>
-  t('emailValidation.timerText', { countdown: countdown.value })
-);
+const timerText = computed(() => t('emailValidation.timerText', { countdown: countdown.value }));
 
 const handleSubmit = async () => {
   const code = getOtpValue.value;
@@ -120,29 +112,30 @@ onUnmounted(stopCountdown);
 
 <style scoped lang="scss">
 .email-validation {
-    &__input, &__btn {
-        width: 100%;
-    }
+  &__input,
+  &__btn {
+    width: 100%;
+  }
 
-    &__btn {
-        margin-bottom: 10px;
-    }
+  &__btn {
+    margin-bottom: 10px;
+  }
 
-    &__title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
-    &__card {
-        width: 30%;
-    }
+  &__card {
+    width: 30%;
+  }
 
-    &__resent {
-         margin-top: 20px;
-        text-align: center;
-    }
+  &__resent {
+    margin-top: 20px;
+    text-align: center;
+  }
 }
 
 .otp-inputs {
@@ -166,5 +159,4 @@ onUnmounted(stopCountdown);
     border-color: #3b82f6;
   }
 }
-
 </style>

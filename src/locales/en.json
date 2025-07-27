@@ -39,7 +39,7 @@
   "forgotPassword": {
     "title": "Forgot Password",
     "labels": {
-    "enterEmailAddress": "Enter email address"
+      "enterEmailAddress": "Enter email address"
     },
     "actions": {
       "continue": "Continue"

@@ -43,12 +43,12 @@ const routes = [
         name: 'reset-password',
         component: ResetPasswordView,
         props: route => ({ token: route.query.token as string }),
-      }
-    ]
-  }
-]
+      },
+    ],
+  },
+];
 
 export const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});

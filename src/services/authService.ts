@@ -27,7 +27,6 @@ export const register = async (payload: RegisterPayload) => {
   return await res.json();
 };
 
-
 export const verify = async (payload: verifyPayload) => {
   const res = await fetch(`${import.meta.env.VITE_USER_API}/auth/verify`, {
     method: 'POST',
@@ -35,7 +34,7 @@ export const verify = async (payload: verifyPayload) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(payload),
-  })
+  });
 
   if (!res.ok) {
     const error = await res.json();
@@ -43,4 +42,4 @@ export const verify = async (payload: verifyPayload) => {
   }
 
   return await res.json();
-}
+};

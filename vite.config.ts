@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
-import { fileURLToPath, URL } from 'url'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
+import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
   plugins: [vue()],
@@ -11,4 +11,4 @@ export default defineConfig({
       '@ui': fileURLToPath(new URL('./src/ui-kit/src', import.meta.url)),
     },
   },
-})
+});
