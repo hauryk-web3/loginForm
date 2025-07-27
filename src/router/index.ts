@@ -4,6 +4,8 @@ import VerifyEmailView from '../views/VerifyEmailView.vue';
 import LoginView from '../views/LoginView.vue';
 import RootTemp from '../components/RootTemp.vue';
 import AuthLayout from '../layouts/AuthLayout.vue';
+import ResetPasswordView from '../views/ResetPasswordView.vue';
+import ForgotPasswordView from '../views/ForgotPasswordView.vue';
 
 const routes = [
   {
@@ -30,6 +32,17 @@ const routes = [
         path: 'login',
         name: 'login',
         component: LoginView,
+      },
+      {
+        path: 'forgot-password',
+        name: 'forgot-password',
+        component: ForgotPasswordView,
+      },
+      {
+        path: 'reset-password',
+        name: 'reset-password',
+        component: ResetPasswordView,
+        props: route => ({ token: route.query.token as string }),
       }
     ]
   }

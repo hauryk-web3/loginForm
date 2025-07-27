@@ -38,7 +38,12 @@ import ButtonUI from '../ui-kit/src/components/Button.vue';
 import InputUI from '../ui-kit/src/components/Input.vue';
 import CardUI from '../ui-kit/src/components/Card.vue';
 import { reactive } from 'vue';
-import { Github, AlignVerticalSpaceAround } from 'lucide-vue-next';
+import { Github, AlignVerticalSpaceAround } from 'lucide-vue-next'
+import { useRoute } from 'vue-router';
+import {router} from '../router/index';
+
+
+const route = useRoute();
 
 interface User {
     email: string;
@@ -55,7 +60,7 @@ const handleLogin = () => {
 }
 
 const handleForgotPassword = () => {
-
+//   router.push({ name: 'verify-email', query: { email: response.user.email } });
 }
 </script>
 

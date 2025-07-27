@@ -35,5 +35,25 @@
       "submit": "Submit",
       "resend": "Resend code"
     }
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "labels": {
+    "enterEmailAddress": "Enter email address"
+    },
+    "actions": {
+      "continue": "Continue"
+    }
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "hint": "Please create a new passoword that you don't use an any other site",
+    "labels": {
+      "createNewPassword": "Create new password",
+      "confirmYourPassword": "Confirm your password"
+    },
+    "actions": {
+      "change": "Change"
+    }
   }
 }
