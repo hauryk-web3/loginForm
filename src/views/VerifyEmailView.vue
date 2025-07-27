@@ -38,9 +38,9 @@ import CardUI from '../ui-kit/src/components/Card.vue';
 import ButtonUI from '../ui-kit/src/components/Button.vue';
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { verify } from '../services/authService';
 import { router } from '../router/index';
 import { useI18n } from 'vue-i18n';
+import { api } from '../api/services';
 
 const { t } = useI18n();
 
@@ -98,7 +98,7 @@ const timerText = computed(() => t('emailValidation.timerText', { countdown: cou
 const handleSubmit = async () => {
   const code = getOtpValue.value;
 
-  await verify({
+  await api.auth.verify({
     email: userEmail.value,
     code,
   });
@@ -129,7 +129,8 @@ onUnmounted(stopCountdown);
   }
 
   &__card {
-    width: 30%;
+    width: 35%;
+    height: auto;
   }
 
   &__resent {

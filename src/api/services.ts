@@ -1,4 +1,4 @@
-import { authApi } from './modules/auth';
+import { authApi } from './auth';
 
 export const api = {
   auth: authApi,

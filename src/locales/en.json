@@ -1,6 +1,6 @@
 {
   "register": {
-    "title": "Register",
+    "title": "Sign Up",
     "labels": {
       "firstName": "First name",
       "lastName": "Last name",
@@ -15,7 +15,7 @@
   "login": {
     "title": "Login",
     "labels": {
-      "username": "Username",
+      "email": "Email",
       "password": "Password"
     },
     "forgotPassword": "Forgot password?",

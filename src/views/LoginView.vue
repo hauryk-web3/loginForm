@@ -6,11 +6,7 @@
       </div>
     </template>
     <div class="login-content">
-      <InputUI
-        class="login-input__text"
-        v-model="user.email"
-        :label="$t('login.labels.username')"
-      />
+      <InputUI class="login-input__text" v-model="user.email" :label="$t('login.labels.email')" />
       <InputUI
         class="login-input__password"
         v-model="user.password"
@@ -41,7 +37,9 @@ import CardUI from '../ui-kit/src/components/Card.vue';
 import { reactive } from 'vue';
 import { Github, AlignVerticalSpaceAround } from 'lucide-vue-next';
 import { useRoute } from 'vue-router';
+import { api } from '../api/services';
 import { router } from '../router/index';
+import { tokenStorage } from '../utils/token';
 
 const route = useRoute();
 
@@ -55,7 +53,14 @@ const user = reactive<User>({
   password: '',
 });
 
-const handleLogin = () => {};
+const handleLogin = async () => {
+  const result = await api.auth.login({
+    email: user.email,
+    password: user.password,
+  });
+
+  tokenStorage.set(result.access_token);
+};
 
 const handleForgotPassword = () => {
   //   router.push({ name: 'verify-email', query: { email: response.user.email } });

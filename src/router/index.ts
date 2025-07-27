@@ -6,12 +6,20 @@ import RootTemp from '../components/RootTemp.vue';
 import AuthLayout from '../layouts/AuthLayout.vue';
 import ResetPasswordView from '../views/ResetPasswordView.vue';
 import ForgotPasswordView from '../views/ForgotPasswordView.vue';
+import TestDashboard from '../components/TestDashboard.vue';
+import { useAuthStore } from '../store/auth';
 
 const routes = [
   {
     path: '/',
     name: 'root',
     component: RootTemp,
+  },
+  {
+    path: '/dashboard',
+    name: 'root',
+    component: TestDashboard,
+    meta: { requiresAuth: true },
   },
   {
     path: '/',
@@ -51,4 +59,16 @@ const routes = [
 export const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach(async (to, from, next) => {
+  const auth = useAuthStore();
+
+  console.log('here', auth.isAuthenticated);
+
+  if (to.meta.requiresAuth && !auth.isAuthenticated) {
+    return next({ path: '/login' });
+  }
+
+  next();
 });

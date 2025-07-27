@@ -51,7 +51,7 @@
 import ButtonUI from '../ui-kit/src/components/Button.vue';
 import InputUI from '../ui-kit/src/components/Input.vue';
 import CardUI from '../ui-kit/src/components/Card.vue';
-import { reactive, watch } from 'vue';
+import { reactive } from 'vue';
 import {
   validateFirstName,
   validateLastName,
@@ -59,7 +59,7 @@ import {
   validatePassword,
   validateConfirmPassword,
 } from '../utils/validation';
-import { register } from '../services/authService';
+import { api } from '../api/services';
 import { router } from '../router/index';
 import type User from '../types/user';
 
@@ -79,42 +79,6 @@ const errors = reactive<Record<string, string>>({
   confirmPassword: '',
 });
 
-watch(
-  () => user.firstName,
-  val => {
-    errors.firstName = validateFirstName(val);
-  },
-);
-
-watch(
-  () => user.lastName,
-  val => {
-    errors.lastName = validateLastName(val);
-  },
-);
-
-watch(
-  () => user.email,
-  val => {
-    errors.email = validateEmail(val);
-  },
-);
-
-watch(
-  () => user.password,
-  val => {
-    errors.password = validatePassword(val);
-    errors.confirmPassword = validateConfirmPassword(val, user.confirmPassword);
-  },
-);
-
-watch(
-  () => user.confirmPassword,
-  val => {
-    errors.confirmPassword = validateConfirmPassword(user.password, val);
-  },
-);
-
 const validate = (): boolean => {
   errors.firstName = validateFirstName(user.firstName);
   errors.lastName = validateLastName(user.lastName);
@@ -128,7 +92,7 @@ const validate = (): boolean => {
 const handleRegister = async () => {
   if (!validate()) return;
 
-  const response = await register({
+  const response = await api.auth.register({
     firstname: user.firstName,
     lastname: user.lastName,
     email: user.email,
@@ -141,13 +105,8 @@ const handleRegister = async () => {
 
 <style scoped lang="scss">
 .register {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-
   &-card {
-    width: 30%;
+    width: 45%;
     height: auto;
   }
 
