@@ -18,7 +18,6 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const data = await api.auth.me();
       user.value = data;
-      console.log('isAuthntificated', isAuthenticated.value);
     } catch (e) {
       tokenStorage.clear();
       user.value = null;

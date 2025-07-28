@@ -7,6 +7,7 @@ import AuthLayout from '../layouts/AuthLayout.vue';
 import ResetPasswordView from '../views/ResetPasswordView.vue';
 import ForgotPasswordView from '../views/ForgotPasswordView.vue';
 import TestDashboard from '../components/TestDashboard.vue';
+import OAuthCallback from '../views/OAuthCallback.vue';
 import { useAuthStore } from '../store/auth';
 
 const routes = [
@@ -51,6 +52,11 @@ const routes = [
         name: 'reset-password',
         component: ResetPasswordView,
         props: route => ({ token: route.query.token as string }),
+      },
+      {
+        path: '/oauth/callback',
+        name: 'oauth-callback',
+        component: OAuthCallback,
       },
     ],
   },

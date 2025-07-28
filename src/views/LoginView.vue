@@ -21,9 +21,7 @@
         }}</ButtonUI>
         <span class="action__text">{{ $t('login.actions.orSignUpUsing') }}</span>
         <div class="action__icons">
-          <Github class="w-6 h-6 text-gray-600" />
-          <span>{{ $t('login.actions.yandex') }}</span>
-          <span>{{ $t('login.actions.google') }}</span>
+          <span class="temp-text" @click="handleAuthWithGoogle">Google</span>
         </div>
       </div>
     </template>
@@ -35,7 +33,6 @@ import ButtonUI from '../ui-kit/src/components/Button.vue';
 import InputUI from '../ui-kit/src/components/Input.vue';
 import CardUI from '../ui-kit/src/components/Card.vue';
 import { reactive } from 'vue';
-import { Github, AlignVerticalSpaceAround } from 'lucide-vue-next';
 import { useRoute } from 'vue-router';
 import { api } from '../api/services';
 import { router } from '../router/index';
@@ -64,6 +61,10 @@ const handleLogin = async () => {
 
 const handleForgotPassword = () => {
   //   router.push({ name: 'verify-email', query: { email: response.user.email } });
+};
+
+const handleAuthWithGoogle = () => {
+  window.location.href = 'http://localhost:3000/auth/google';
 };
 </script>
 
@@ -134,5 +135,12 @@ const handleForgotPassword = () => {
   align-items: center;
   justify-content: center;
   gap: 16px;
+}
+
+.temp-text {
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 </style>
