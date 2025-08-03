@@ -17,6 +17,15 @@ export interface LoginPayload {
   password: string;
 }
 
+export interface ForgotPasswordPayload {
+  email: string;
+}
+
+export interface resetPasswordPayload {
+  token: string;
+  newPassword: string;
+}
+
 export const authApi = {
   register(payload: RegisterPayload) {
     return api.post('/auth/register', payload);
@@ -29,5 +38,11 @@ export const authApi = {
   },
   me() {
     return api.get('/auth/me');
+  },
+  forgotPassword(payload: ForgotPasswordPayload) {
+    return api.post('/auth/forgot-password', payload);
+  },
+  resetPasswrod(payload: resetPasswordPayload) {
+    return api.post('/auth/reset-password', payload);
   },
 };

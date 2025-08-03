@@ -23,14 +23,14 @@ import CardUI from '../ui-kit/src/components/Card.vue';
 import ButtonUI from '../ui-kit/src/components/Button.vue';
 import InputUI from '../ui-kit/src/components/Input.vue';
 import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
+import { api } from '../api/services';
 
 const email = ref<string>('');
 
-const handleContinue = () => {
-  // route
+const handleContinue = async () => {
+  const result = await api.auth.forgotPassword({ email: email.value });
+
+  alert('Link to reset password goes to mail');
 };
 </script>
 

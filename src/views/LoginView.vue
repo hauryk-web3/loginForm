@@ -60,7 +60,7 @@ const handleLogin = async () => {
 };
 
 const handleForgotPassword = () => {
-  //   router.push({ name: 'verify-email', query: { email: response.user.email } });
+  router.push({ name: 'forgot-password' });
 };
 
 const handleAuthWithGoogle = () => {

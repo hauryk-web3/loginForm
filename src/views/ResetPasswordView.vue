@@ -32,6 +32,8 @@ import ButtonUI from '../ui-kit/src/components/Button.vue';
 import InputUI from '../ui-kit/src/components/Input.vue';
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { api } from '../api/services';
+import { router } from '../router/index';
 
 const route = useRoute();
 const token = computed(() => route.query.token as string);
@@ -39,8 +41,13 @@ const token = computed(() => route.query.token as string);
 const newPassword = ref<string>('');
 const confirmPassword = ref<string>('');
 
-const handleResetPassword = () => {
-  //
+const handleResetPassword = async () => {
+  await api.auth.resetPasswrod({
+    token: token.value,
+    newPassword: newPassword.value,
+  });
+
+  router.push({ name: 'login' });
 };
 </script>
 
